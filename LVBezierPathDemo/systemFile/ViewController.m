@@ -29,7 +29,7 @@
 - (void)buttonClock:(UIButton *)btn{
     self.view.backgroundColor = [UIColor grayColor];
     GIfAnimation *animationView = [[GIfAnimation alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    animationView.percent = 0.75;
+    animationView.percent = 0.85;
     animationView.percentLableColor = [UIColor redColor];
     [animationView restartAnimation];
     [self.view addSubview:animationView];
