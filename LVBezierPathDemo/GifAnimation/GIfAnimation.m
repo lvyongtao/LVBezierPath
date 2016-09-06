@@ -148,8 +148,12 @@ static const CGFloat timeInterval = 0.01;
         [imageView.layer removeAnimationForKey:@"move"];
         self.percent = 0.00;
     }
-    //添加计时器
-    [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(actionTime:) userInfo:nil repeats:YES];
+    //添加UI刷新计时器
+    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(actionTime:)];
+    //    self.displayLink.frameInterval = 30;
+    [displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+
+//    [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(actionTime:) userInfo:nil repeats:YES];
     time = 0.00;
     
     
@@ -161,7 +165,7 @@ static const CGFloat timeInterval = 0.01;
 }
 #pragma mark
 #pragma mark --计时动画运动
-- (void)actionTime:(NSTimer *)timer{
+- (void)actionTime:(CADisplayLink *)timer{
     
     
     CALayer *tempLayer = imageView.layer.presentationLayer;
